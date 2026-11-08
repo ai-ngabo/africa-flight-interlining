@@ -1,0 +1,22 @@
+{
+  "name": "@pai/gateway",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts"
+  },
+  "dependencies": {
+    "@fastify/compress": "^9.3.0",
+    "@fastify/cors": "^11.4.1",
+    "@fastify/formbody": "^9.0.1",
+    "@fastify/http-proxy": "^11.6.6",
+    "@fastify/rate-limit": "^11.2.2",
+    "@fastify/static": "^10.1.10",
+    "@pai/shared": "*",
+    "fastify": "^5.12.8",
+    "jose": "^5.9.6",
+    "zod": "^4.6.7"
+  }
+}
