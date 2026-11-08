@@ -1,0 +1,9 @@
+node_modules/
+.env
+*.log
+web/.next/
+web/out/
+services/intelligence/.venv/
+services/intelligence/models/*.json
+__pycache__/
+.pytest_cache/
