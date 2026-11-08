@@ -1,0 +1,35 @@
+{
+  "_disclaimer": "Carrier names are real; on-time performance (otp) and baggage values are ILLUSTRATIVE seed values, not published statistics. Replace with real data (e.g. OpenSky-derived punctuality) before any production use.",
+  "carriers": [
+    { "code": "WB", "name": "RwandAir", "mode": "flight", "hub": "KGL", "country": "RW", "otp": 0.84, "checkedBags": 2, "checkedBagKg": 23, "cabinKg": 7 },
+    { "code": "ET", "name": "Ethiopian Airlines", "mode": "flight", "hub": "ADD", "country": "ET", "otp": 0.82, "checkedBags": 2, "checkedBagKg": 23, "cabinKg": 7 },
+    { "code": "KQ", "name": "Kenya Airways", "mode": "flight", "hub": "NBO", "country": "KE", "otp": 0.78, "checkedBags": 1, "checkedBagKg": 23, "cabinKg": 12 },
+    { "code": "P4", "name": "Air Peace", "mode": "flight", "hub": "LOS", "country": "NG", "otp": 0.62, "checkedBags": 1, "checkedBagKg": 23, "cabinKg": 7 },
+    { "code": "KP", "name": "ASKY Airlines", "mode": "flight", "hub": "LFW", "country": "TG", "otp": 0.76, "checkedBags": 2, "checkedBagKg": 23, "cabinKg": 7 },
+    { "code": "HF", "name": "Air Côte d'Ivoire", "mode": "flight", "hub": "ABJ", "country": "CI", "otp": 0.79, "checkedBags": 1, "checkedBagKg": 23, "cabinKg": 7 },
+    { "code": "AW", "name": "Africa World Airlines", "mode": "flight", "hub": "ACC", "country": "GH", "otp": 0.74, "checkedBags": 1, "checkedBagKg": 23, "cabinKg": 7 },
+    { "code": "SA", "name": "South African Airways", "mode": "flight", "hub": "JNB", "country": "ZA", "otp": 0.86, "checkedBags": 1, "checkedBagKg": 23, "cabinKg": 8 },
+    { "code": "4Z", "name": "Airlink", "mode": "flight", "hub": "JNB", "country": "ZA", "otp": 0.88, "checkedBags": 1, "checkedBagKg": 23, "cabinKg": 8 },
+    { "code": "FA", "name": "FlySafair", "mode": "flight", "hub": "JNB", "country": "ZA", "otp": 0.92, "checkedBags": 0, "checkedBagKg": 0, "cabinKg": 7 },
+    { "code": "UR", "name": "Uganda Airlines", "mode": "flight", "hub": "EBB", "country": "UG", "otp": 0.83, "checkedBags": 2, "checkedBagKg": 23, "cabinKg": 7 },
+    { "code": "TC", "name": "Air Tanzania", "mode": "flight", "hub": "DAR", "country": "TZ", "otp": 0.70, "checkedBags": 1, "checkedBagKg": 23, "cabinKg": 7 },
+    { "code": "MS", "name": "EgyptAir", "mode": "flight", "hub": "CAI", "country": "EG", "otp": 0.77, "checkedBags": 2, "checkedBagKg": 23, "cabinKg": 8 },
+    { "code": "AT", "name": "Royal Air Maroc", "mode": "flight", "hub": "CMN", "country": "MA", "otp": 0.71, "checkedBags": 1, "checkedBagKg": 23, "cabinKg": 10 },
+    { "code": "UM", "name": "Air Zimbabwe", "mode": "flight", "hub": "HRE", "country": "ZW", "otp": 0.60, "checkedBags": 1, "checkedBagKg": 20, "cabinKg": 7 },
+    { "code": "TM", "name": "LAM Mozambique Airlines", "mode": "flight", "hub": "MPM", "country": "MZ", "otp": 0.65, "checkedBags": 1, "checkedBagKg": 23, "cabinKg": 7 },
+    { "code": "HM", "name": "Air Seychelles", "mode": "flight", "hub": "SEZ", "country": "SC", "otp": 0.85, "checkedBags": 1, "checkedBagKg": 23, "cabinKg": 7 },
+    { "code": "MK", "name": "Air Mauritius", "mode": "flight", "hub": "MRU", "country": "MU", "otp": 0.84, "checkedBags": 1, "checkedBagKg": 30, "cabinKg": 7 },
+
+    { "code": "VOL", "name": "Volcano Express", "mode": "bus", "hub": "KGL-NYB", "country": "RW", "otp": 0.80, "checkedBags": 1, "checkedBagKg": 20, "cabinKg": 5 },
+    { "code": "MCX", "name": "Modern Coast", "mode": "bus", "hub": "NBO-BUS", "country": "KE", "otp": 0.75, "checkedBags": 1, "checkedBagKg": 20, "cabinKg": 5 },
+    { "code": "RSS", "name": "Riverside Shuttle", "mode": "bus", "hub": "NBO-BUS", "country": "KE", "otp": 0.85, "checkedBags": 1, "checkedBagKg": 20, "cabinKg": 5 },
+    { "code": "KEX", "name": "Kilimanjaro Express", "mode": "bus", "hub": "DAR-BUS", "country": "TZ", "otp": 0.75, "checkedBags": 1, "checkedBagKg": 20, "cabinKg": 5 },
+    { "code": "ABC", "name": "ABC Transport", "mode": "bus", "hub": "LOS-BUS", "country": "NG", "otp": 0.70, "checkedBags": 1, "checkedBagKg": 20, "cabinKg": 5 },
+    { "code": "STC", "name": "STC Ghana", "mode": "bus", "hub": "ACC-BUS", "country": "GH", "otp": 0.70, "checkedBags": 1, "checkedBagKg": 20, "cabinKg": 5 },
+    { "code": "ICP", "name": "Intercape", "mode": "bus", "hub": "JNB-BUS", "country": "ZA", "otp": 0.85, "checkedBags": 1, "checkedBagKg": 20, "cabinKg": 5 }
+  ],
+  "interlineAgreements": [
+    { "carriers": ["ET", "KP"], "note": "Sample: through-checked baggage and protected connections assumed." },
+    { "carriers": ["KQ", "SA"], "note": "Sample: through-checked baggage and protected connections assumed." }
+  ]
+}
