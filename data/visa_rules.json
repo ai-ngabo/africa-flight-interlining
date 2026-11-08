@@ -1,0 +1,87 @@
+{
+  "_disclaimer": "AI-seeded MVP rule set, NOT verified legal guidance. Entry rules in Africa change frequently. Every rule carries a confidence level; production use requires a verified source (official immigration portals or IATA Timatic) and a human review workflow.",
+  "lastReviewed": "2026-11-07",
+  "reviewStatus": "unverified-seed",
+  "requirementSeverity": {
+    "none": 0,
+    "visa_free": 0,
+    "eta": 1,
+    "visa_on_arrival": 1,
+    "evisa": 2,
+    "check_required": 2,
+    "visa_required": 3
+  },
+  "africanCountries": ["DZ","AO","BJ","BW","BF","BI","CV","CM","CF","TD","KM","CG","CD","CI","DJ","EG","GQ","ER","SZ","ET","GA","GM","GH","GN","GW","KE","LS","LR","LY","MG","MW","ML","MR","MU","MA","MZ","NA","NE","NG","RW","ST","SN","SC","SL","SO","ZA","SS","SD","TZ","TG","TN","UG","ZM","ZW"],
+  "blocs": {
+    "ECOWAS": { "members": ["BJ","CV","CI","GM","GH","GN","GW","LR","NG","SN","SL","TG"], "note": "ECOWAS Protocol on Free Movement (1979): visa-free stays up to 90 days. Burkina Faso, Mali and Niger left ECOWAS in Jan 2025 (AES); transitional free-movement arrangements may apply — verify." },
+    "EAC": { "members": ["KE","UG","RW","TZ","BI","SS"], "note": "EAC Common Market Protocol. DRC and Somalia are EAC members but implementation of free movement is partial — verify." },
+    "CEMAC": { "members": ["CM","GA","CG","TD","CF","GQ"], "note": "CEMAC free movement of persons (implemented 2017)." },
+    "SADC": { "members": ["AO","BW","KM","CD","SZ","LS","MG","MW","MU","MZ","NA","SC","ZA","TZ","ZM","ZW"], "note": "SADC has no single visa regime; many bilateral exemptions exist between members." }
+  },
+  "destinations": {
+    "RW": { "default": { "requirement": "visa_on_arrival", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "african": true }, "requirement": "visa_free", "maxStayDays": 30, "confidence": "medium", "note": "Rwanda announced visa-free entry for all African nationals (Nov 2023)." } ] },
+    "BJ": { "default": { "requirement": "evisa", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "african": true }, "requirement": "visa_free", "maxStayDays": 90, "confidence": "high", "note": "Benin waived visas for all African nationals (2019)." } ] },
+    "GH": { "default": { "requirement": "visa_required", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "bloc": "ECOWAS" }, "requirement": "visa_free", "maxStayDays": 90, "confidence": "high" },
+      { "appliesTo": { "african": true }, "requirement": "visa_free", "confidence": "low", "note": "Ghana announced visa-free entry for all African passport holders (2025); confirm implementation status." } ] },
+    "KE": { "default": { "requirement": "eta", "confidence": "medium", "note": "Kenya Electronic Travel Authorisation (eTA)." }, "rules": [
+      { "appliesTo": { "bloc": "EAC" }, "requirement": "visa_free", "confidence": "high" },
+      { "appliesTo": { "african": true, "except": ["SO","LY"] }, "requirement": "visa_free", "maxStayDays": 60, "confidence": "medium", "note": "Kenya exempted most African nationals from the eTA (2025); Somalia and Libya excluded." } ] },
+    "UG": { "default": { "requirement": "evisa", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "bloc": "EAC" }, "requirement": "visa_free", "confidence": "high" } ] },
+    "TZ": { "default": { "requirement": "evisa", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "bloc": "EAC" }, "requirement": "visa_free", "confidence": "high" },
+      { "appliesTo": { "countries": ["BW","LS","MW","MU","MZ","NA","SZ","ZA","ZM","ZW"] }, "requirement": "visa_free", "confidence": "low", "note": "Many SADC nationals are exempt — verify per nationality." } ] },
+    "BI": { "default": { "requirement": "visa_on_arrival", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "bloc": "EAC" }, "requirement": "visa_free", "confidence": "high" } ] },
+    "ET": { "default": { "requirement": "evisa", "confidence": "medium", "note": "Ethiopia e-Visa (also obtainable on arrival for many nationalities)." }, "rules": [
+      { "appliesTo": { "countries": ["KE","DJ"] }, "requirement": "visa_free", "confidence": "high" } ] },
+    "CD": { "default": { "requirement": "evisa", "confidence": "medium" }, "rules": [] },
+    "ZA": { "default": { "requirement": "visa_required", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "countries": ["AO","BW","LS","MW","MU","MZ","NA","SC","SZ","TZ","ZM","ZW","KE","GH"] }, "requirement": "visa_free", "maxStayDays": 90, "confidence": "medium", "note": "Most SADC nationals plus Kenya and Ghana are visa-exempt; stay limits vary (30–90 days)." } ] },
+    "NG": { "default": { "requirement": "evisa", "confidence": "medium", "note": "Nigeria e-Visa / visa on arrival pre-approval." }, "rules": [
+      { "appliesTo": { "bloc": "ECOWAS" }, "requirement": "visa_free", "maxStayDays": 90, "confidence": "high" } ] },
+    "CI": { "default": { "requirement": "evisa", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "bloc": "ECOWAS" }, "requirement": "visa_free", "maxStayDays": 90, "confidence": "high" } ] },
+    "SN": { "default": { "requirement": "check_required", "confidence": "low" }, "rules": [
+      { "appliesTo": { "bloc": "ECOWAS" }, "requirement": "visa_free", "maxStayDays": 90, "confidence": "high" } ] },
+    "TG": { "default": { "requirement": "visa_on_arrival", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "bloc": "ECOWAS" }, "requirement": "visa_free", "maxStayDays": 90, "confidence": "high" } ] },
+    "CM": { "default": { "requirement": "visa_required", "confidence": "medium", "note": "Cameroon e-Visa portal available for many nationalities." }, "rules": [
+      { "appliesTo": { "bloc": "CEMAC" }, "requirement": "visa_free", "confidence": "high" } ] },
+    "MA": { "default": { "requirement": "visa_required", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "countries": ["SN","CI","TN","GN","ML","NE","CG","GA"] }, "requirement": "visa_free", "maxStayDays": 90, "confidence": "medium" } ] },
+    "EG": { "default": { "requirement": "visa_required", "confidence": "medium" }, "rules": [] },
+    "ZM": { "default": { "requirement": "check_required", "confidence": "low" }, "rules": [
+      { "appliesTo": { "bloc": "SADC" }, "requirement": "visa_free", "confidence": "medium" } ] },
+    "ZW": { "default": { "requirement": "evisa", "confidence": "medium" }, "rules": [
+      { "appliesTo": { "bloc": "SADC" }, "requirement": "visa_free", "confidence": "medium" } ] },
+    "MW": { "default": { "requirement": "check_required", "confidence": "low", "note": "Malawi waived visas for a large list of countries in 2024 — verify." }, "rules": [
+      { "appliesTo": { "bloc": "SADC" }, "requirement": "visa_free", "confidence": "medium" } ] },
+    "MZ": { "default": { "requirement": "check_required", "confidence": "low" }, "rules": [
+      { "appliesTo": { "bloc": "SADC" }, "requirement": "visa_free", "confidence": "medium" } ] },
+    "NA": { "default": { "requirement": "check_required", "confidence": "low" }, "rules": [
+      { "appliesTo": { "bloc": "SADC" }, "requirement": "visa_free", "confidence": "medium" } ] },
+    "BW": { "default": { "requirement": "check_required", "confidence": "low" }, "rules": [
+      { "appliesTo": { "bloc": "SADC" }, "requirement": "visa_free", "confidence": "medium" } ] },
+    "MU": { "default": { "requirement": "check_required", "confidence": "low" }, "rules": [
+      { "appliesTo": { "bloc": "SADC" }, "requirement": "visa_free", "confidence": "medium" } ] },
+    "SC": { "default": { "requirement": "eta", "confidence": "medium", "note": "Seychelles is visa-free for all nationalities but requires an online Travel Authorisation before departure." }, "rules": [] }
+  },
+  "airsideTransit": {
+    "ADD": { "possible": true, "confidence": "medium" },
+    "NBO": { "possible": true, "confidence": "medium" },
+    "KGL": { "possible": true, "confidence": "medium" },
+    "JNB": { "possible": true, "confidence": "medium", "note": "Some nationalities need a South African transit visa even airside." },
+    "CMN": { "possible": true, "confidence": "medium" },
+    "CAI": { "possible": true, "confidence": "low", "note": "Egypt requires transit visas for some nationalities." },
+    "LFW": { "possible": true, "confidence": "medium" },
+    "LOS": { "possible": true, "confidence": "low" },
+    "ACC": { "possible": true, "confidence": "low" },
+    "EBB": { "possible": true, "confidence": "low" },
+    "DAR": { "possible": true, "confidence": "low" },
+    "ABJ": { "possible": true, "confidence": "low" }
+  }
+}
