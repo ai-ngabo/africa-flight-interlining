@@ -1,0 +1,84 @@
+# Full free/open-source stack. Infra only:   docker compose up -d neo4j redis postgres chroma ollama
+# Everything (infra + services):              docker compose --profile app up -d --build
+# Pull the free local LLM once:               docker compose exec ollama ollama pull llama3.1:8b
+services:
+  neo4j:
+    image: neo4j:5.26-community
+    environment:
+      NEO4J_AUTH: neo4j/localpassword
+    ports: ["7474:7474", "7687:7687"]
+    volumes: [neo4j:/data]
+
+  redis:
+    image: redis:7.4-alpine
+    ports: ["6379:6379"]
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: pai
+      POSTGRES_PASSWORD: pai
+      POSTGRES_DB: pai
+    ports: ["5432:5432"]
+    volumes: [pg:/var/lib/postgresql/data]
+
+  chroma:
+    image: chromadb/chroma:0.5.23
+    ports: ["8001:8000"]
+    volumes: [chroma:/chroma/chroma]
+
+  ollama:
+    image: ollama/ollama:0.5.7
+    ports: ["11434:11434"]
+    volumes: [ollama:/root/.ollama]
+
+  # ------------------------------------------------------------------ application services
+  intelligence:
+    profiles: [app]
+    build: { context: ., dockerfile: services/intelligence/Dockerfile }
+    environment:
+      OLLAMA_URL: http://ollama:11434
+      CHROMA_URL: http://chroma:8000
+    ports: ["8000:8000"]
+    depends_on: [chroma, ollama]
+
+  search:
+    profiles: [app]
+    build: { context: ., dockerfile: Dockerfile.node, args: { SERVICE: search } }
+    environment: &nodeenv
+      NEO4J_URI: bolt://neo4j:7687
+      NEO4J_PASSWORD: localpassword
+      REDIS_URL: redis://redis:6379
+      DATABASE_URL: postgres://pai:pai@postgres:5432/pai
+      SEARCH_URL: http://search:4001
+      BOOKING_URL: http://booking:4002
+      PAYMENT_URL: http://payment:4003
+      INTEL_URL: http://intelligence:8000
+      OFFER_SIGNING_SECRET: ${OFFER_SIGNING_SECRET:-dev-offer-secret-change-me}
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY:-dev-internal-key-change-me}
+      JWT_SECRET: ${JWT_SECRET:-dev-jwt-secret-change-me}
+    depends_on: [neo4j, redis]
+
+  booking:
+    profiles: [app]
+    build: { context: ., dockerfile: Dockerfile.node, args: { SERVICE: booking } }
+    environment: *nodeenv
+    depends_on: [postgres]
+
+  payment:
+    profiles: [app]
+    build: { context: ., dockerfile: Dockerfile.node, args: { SERVICE: payment } }
+    environment: *nodeenv
+
+  gateway:
+    profiles: [app]
+    build: { context: ., dockerfile: Dockerfile.node, args: { SERVICE: gateway } }
+    environment: *nodeenv
+    ports: ["8080:8080"]
+    depends_on: [search, booking, payment, intelligence]
+
+volumes:
+  neo4j: {}
+  pg: {}
+  chroma: {}
+  ollama: {}
