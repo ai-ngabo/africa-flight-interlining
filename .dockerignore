@@ -1,0 +1,8 @@
+node_modules
+**/node_modules
+web/.next
+web/out
+services/intelligence/.venv
+services/intelligence/models/*.json
+**/__pycache__
+.env
