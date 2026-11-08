@@ -1,0 +1,28 @@
+# One image recipe for every Node/TypeScript service (search, booking, payment, gateway).
+FROM node:20-alpine AS deps
+WORKDIR /app
+COPY package.json package-lock.json* ./
+COPY packages/shared/package.json packages/shared/
+COPY services/search/package.json services/search/
+COPY services/booking/package.json services/booking/
+COPY services/payment/package.json services/payment/
+COPY services/gateway/package.json services/gateway/
+COPY web/package.json web/
+RUN npm ci --no-audit --no-fund
+
+FROM deps AS web
+COPY web web
+RUN npm run build -w web
+
+FROM node:20-alpine
+ARG SERVICE
+ENV SERVICE=${SERVICE} NODE_ENV=production
+WORKDIR /app
+COPY --from=deps /app/node_modules node_modules
+COPY package.json tsconfig.json ./
+COPY packages packages
+COPY services/${SERVICE} services/${SERVICE}
+COPY data data
+COPY --from=web /app/web/out web/out
+USER node
+CMD ["sh", "-c", "npx tsx services/${SERVICE}/src/server.ts"]
