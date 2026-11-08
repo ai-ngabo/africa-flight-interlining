@@ -1,0 +1,4 @@
+# Optional: vector retrieval via a Chroma server (docker compose up -d chroma).
+# Without it the agent uses the built-in BM25 retriever.
+# Keep the client on the same minor version as the chromadb/chroma image in docker-compose.yml.
+chromadb-client>=0.5.20,<0.6
