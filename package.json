@@ -1,0 +1,43 @@
+{
+  "name": "pan-african-interline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pan-African multi-modal flight & virtual interlining aggregator (MVP, free/open-source stack)",
+  "type": "module",
+  "workspaces": [
+    "packages/shared",
+    "services/search",
+    "services/booking",
+    "services/payment",
+    "services/gateway",
+    "web"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n search,booking,payment,gateway -c cyan,magenta,yellow,green \"npm:dev:search\" \"npm:dev:booking\" \"npm:dev:payment\" \"npm:dev:gateway\"",
+    "dev:all": "concurrently -k -n intel,search,booking,payment,gateway -c blue,cyan,magenta,yellow,green \"npm:dev:intel\" \"npm:dev:search\" \"npm:dev:booking\" \"npm:dev:payment\" \"npm:dev:gateway\"",
+    "dev:search": "npm run dev -w services/search",
+    "dev:booking": "npm run dev -w services/booking",
+    "dev:payment": "npm run dev -w services/payment",
+    "dev:gateway": "npm run dev -w services/gateway",
+    "dev:intel": "node scripts/intel.mjs run",
+    "dev:web": "npm run dev -w web",
+    "setup:intel": "node scripts/intel.mjs setup",
+    "test:intel": "node scripts/intel.mjs test",
+    "build:web": "npm run build -w web",
+    "seed:neo4j": "tsx scripts/seed-neo4j.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test tests/core.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.0",
+    "concurrently": "^9.0.1",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "neo4j-driver": "^5.26.0"
+  },
+  "engines": {
+    "node": ">=20.6"
+  }
+}
