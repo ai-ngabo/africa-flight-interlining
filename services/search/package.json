@@ -1,0 +1,17 @@
+{
+  "name": "@pai/search",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts"
+  },
+  "dependencies": {
+    "@pai/shared": "*",
+    "fastify": "^5.12.8",
+    "neo4j-driver": "^5.26.0",
+    "redis": "^4.7.0",
+    "zod": "^4.6.7"
+  }
+}
